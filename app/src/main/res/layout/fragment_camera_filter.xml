@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="eventHandler"
+            type="com.stratpoint.ayalamuseum.fragment.CameraFilterFragment.EventHandler" />
+    </data>
+    <FrameLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.stratpoint.ayalamuseum.MainActivity">
+        <com.stratpoint.ayalamuseum.ui.CameraPreview
+            android:id="@+id/cameraPreview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <com.stratpoint.ayalamuseum.ui.GraphicView
+                android:id="@+id/graphicView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </com.stratpoint.ayalamuseum.ui.CameraPreview>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/shape_image_filter_bg"
+                android:clickable="true"
+                android:onClick="@{eventHandler::onCameraFilterBoxClick}">
+                <ImageView
+                    android:id="@+id/filterImage"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/img_eyes_glasses"
+                    android:scaleType="centerInside"
+                    android:background="@drawable/shape_filter_image_bg" />
+                <TextView
+                    android:id="@+id/filterName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/filterImage"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/filterName"
+                    android:layout_toRightOf="@id/filterImage"
+                    android:text="@string/change_filter" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:clickable="true">
+                <ImageView
+                    android:id="@+id/capturedImage"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp" />
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/btn_camera_capture"
+                    android:background="@android:color/transparent" />
+                <TextView
+                    android:id="@+id/numberOfFilters"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/numberOfFilters"
+                    android:layout_alignParentRight="true"
+                    android:text="@string/unlocked_filters"
+                    android:textColor="@android:color/white" />
+            </RelativeLayout>
+        </LinearLayout>
+    </FrameLayout>
+</layout>
